@@ -20,9 +20,9 @@ angular.module('ProductApp.controllers', []).
     controller('ProductController', ['$scope', '$routeParams', 'ProductService',
         function($scope, $routeParams, ProductService) {
     		$scope.product = null;
-	        var shortname = $routeParams.shortname;
+	        var name = $routeParams.shortname;
 
-	        ProductService.getProductJSON(shortname).success(function (response) {
+	        ProductService.getProductJSON(name).success(function (response) {
 	        	$scope.product = response;
 	        });
     	}
@@ -36,8 +36,7 @@ angular.module('ProductApp.controllers', []).
             	productXML += '<description>' + $scope.newProduct.description + '</description>';
             	productXML += '<id>' + $scope.newProduct.id + '</id>';
             	productXML += '<price>' + $scope.newProduct.price + '</price>';
-            	productXML += '<shortname>' + $scope.newProduct.shortname + '</shortname>';
-            	productXML += '<sku>' + $scope.newProduct.sku + '</sku></product>';
+            	productXML += '<name>' + $scope.newProduct.name + '</name>';
 
     			ProductService.addProduct(productXML);
     		};
